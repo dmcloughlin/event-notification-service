@@ -20,6 +20,11 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
+            <groupId>com.allianz.ms.registration</groupId>
+            <artifactId>registration-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.lightbend.lagom</groupId>
             <artifactId>lagom-javadsl-server_${scala.binary.version}</artifactId>
         </dependency>
