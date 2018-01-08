@@ -14,6 +14,5 @@ public class HelloModule extends AbstractModule implements ServiceGuiceSupport {
 
         bindService(EventNotificationService.class, EventNotificationServiceImpl.class);
         bindClient(RegistrationService.class);
-        //bind(KafkaConsumer.class).asEagerSingleton();
     }
 }

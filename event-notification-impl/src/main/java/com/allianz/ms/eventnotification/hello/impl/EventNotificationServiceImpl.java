@@ -3,6 +3,7 @@ package com.allianz.ms.eventnotification.hello.impl;
 import akka.Done;
 import akka.stream.javadsl.Flow;
 import com.allianz.ms.eventnotification.hello.api.EventNotificationService;
+import com.allianz.ms.eventnotification.hello.impl.outputchannel.EmailChannel;
 import com.allianz.ms.user.api.RegistrationEvent;
 import com.allianz.ms.user.api.RegistrationService;
 import com.lightbend.lagom.javadsl.api.broker.Subscriber;
@@ -31,6 +32,12 @@ public class EventNotificationServiceImpl implements EventNotificationService {
     private Done handleEventNotification(RegistrationEvent e) {
 
         System.out.println("Registration Event received - Sending Notification" + e.toString());
+
+        if (e instanceof RegistrationEvent.PolicyAndEmailCombinationVerified) {
+
+            System.out.println("Sending email...");
+            new EmailChannel().send(e);
+        }
 
         return Done.getInstance();
     }
